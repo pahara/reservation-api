@@ -11,9 +11,15 @@ import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.OneToMany;
 import jakarta.persistence.Table;
+import jakarta.persistence.UniqueConstraint;
 
 @Entity
-@Table(name = "customers")
+@Table(name = "customers", uniqueConstraints = {
+        @UniqueConstraint(columnNames = {
+                "customer_name",
+                "email"
+        })
+})
 public class Customer {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)

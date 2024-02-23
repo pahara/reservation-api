@@ -14,9 +14,14 @@ import jakarta.persistence.Id;
 import jakarta.persistence.OneToMany;
 import jakarta.persistence.Table;
 import jakarta.persistence.Transient;
+import jakarta.persistence.UniqueConstraint;
 
 @Entity
-@Table(name = "concerts")
+@Table(name = "concerts", uniqueConstraints = {
+        @UniqueConstraint(columnNames = {
+                "concert_name"
+        })
+})
 public class Concert {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
